@@ -4,12 +4,13 @@ import requests
 # import json
 from datetime import datetime as dt
 import time
+import os
 
 # This code isnt perfect by any means, I made it in an hour.
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.0
+# Version: 1.1
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -17,13 +18,15 @@ import time
 # AWS instance, Azure VM, or Google Cloud instance.
 # 
 # How to launch:
-# 1. mkdir covid
-# 2. python3 covid.py
+# 1. python3 covid.py
 
 url = "https://covid19-us-api.herokuapp.com/"
 dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
 
-# covid folder must exist
+# version 1.1: removed dependency for covid folder
+if 'covid' in os.listdir():
+    os.mkdir('covid')
+
 filename = 'covid/' + dtstr
 
 def get_county_stats():
