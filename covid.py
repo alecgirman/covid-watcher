@@ -10,7 +10,7 @@ import os
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.1
+# Version: 1.2
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -24,8 +24,9 @@ url = "https://covid19-us-api.herokuapp.com/"
 dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
 
 # version 1.1: removed dependency for covid folder
-if 'covid' in os.listdir():
-    os.mkdir('covid')
+# version 1.2: removed this because it broke in google cloud
+# if 'covid' in os.listdir():
+#     os.mkdir('covid')
 
 filename = 'covid/' + dtstr
 
