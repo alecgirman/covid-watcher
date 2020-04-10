@@ -10,8 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.5
-# Version running on VM: 1.5
+# Version: 1.5.1
+# Version running on VM: 1.5.1
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -32,8 +32,6 @@ url = "https://covid19-us-api.herokuapp.com/"
 #     os.mkdir('covid')
 
 # Version 1.4: Added 'Version running on VM info'
-
-filename = 'covid/' + dtstr
 
 def get_county_stats():
     # get per county data
@@ -72,8 +70,9 @@ def get_covid_news():
     print('Saved news for ' + dtstr)
 
 def run_all():
-    # Version 1.5: Fixed a bug causing it to overwrite old files instead of making new ones
+    # Version 1.5/1.5.1: Fixed a bug causing it to overwrite old files instead of making new ones
     dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
+    filename = 'covid/' + dtstr
     get_county_stats()
     get_global_stats()
     get_twitter_feed()
