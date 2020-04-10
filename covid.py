@@ -10,8 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.4
-# Version running on VM: 1.4
+# Version: 1.5
+# Version running on VM: 1.5
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -25,7 +25,6 @@ import os, sys
 #   python3 covid.py --once
 
 url = "https://covid19-us-api.herokuapp.com/"
-dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
 
 # version 1.1: removed dependency for covid folder
 # version 1.2: removed this because it broke in google cloud
@@ -73,6 +72,8 @@ def get_covid_news():
     print('Saved news for ' + dtstr)
 
 def run_all():
+    # Version 1.5: Fixed a bug causing it to overwrite old files instead of making new ones
+    dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
     get_county_stats()
     get_global_stats()
     get_twitter_feed()
