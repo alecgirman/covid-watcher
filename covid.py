@@ -10,8 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.5.2
-# Version running on VM: 1.5.2
+# Version: 1.5.3
+# Version running on VM: 1.5.3
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -26,10 +26,6 @@ import os, sys
 
 url = "https://covid19-us-api.herokuapp.com/"
 
-# Version 1.5.2: Fixed NameError...stupid Alec
-dtstr = ''
-filename = ''
-
 # version 1.1: removed dependency for covid folder
 # version 1.2: removed this because it broke in google cloud
 # if 'covid' in os.listdir():
@@ -37,38 +33,38 @@ filename = ''
 
 # Version 1.4: Added 'Version running on VM info'
 
-def get_county_stats():
+def get_county_stats(dtstr: str):
     # get per county data
     response = requests.get(url + 'county?=')
     
-    with open(filename + '.covid.county.json', 'w') as countyfile:
+    with open('covid/' + dtstr + '.covid.county.json', 'w') as countyfile:
         countyfile.write(response.text)
 
     print('Saved county data for ' + dtstr)
 
-def get_global_stats():
+def get_global_stats(dtstr: str):
     # get global data
     response = requests.get(url + 'stats')
     
-    with open(filename + '.covid.stats.json', 'w') as globalfile:
+    with open('covid/' + dtstr + '.covid.stats.json', 'w') as globalfile:
         globalfile.write(response.text)
 
     print('Saved global data for ' + dtstr)
 
-def get_twitter_feed():
+def get_twitter_feed(dtstr: str):
     # get twitter data
     response = requests.get(url + 'twitter')
     
-    with open(filename + '.covid.twitter.json', 'w') as twitterfile:
+    with open('covid/' + dtstr + '.covid.twitter.json', 'w') as twitterfile:
         twitterfile.write(response.text)
 
     print('Saved twitter data for ' + dtstr)
 
-def get_covid_news():
+def get_covid_news(dtstr: str):
     # get covid related news
     response = requests.get(url + 'news')
     
-    with open(filename + '.covid.news.json', 'w') as newsfile:
+    with open('covid/' + dtstr + '.covid.news.json', 'w') as newsfile:
         newsfile.write(response.text)
 
     print('Saved news for ' + dtstr)
@@ -76,12 +72,13 @@ def get_covid_news():
 def run_all():
     # Version 1.5/1.5.1: Fixed a bug causing it to overwrite old files instead of making new ones
     dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
-    filename = 'covid/' + dtstr
-    get_county_stats()
-    get_global_stats()
-    get_twitter_feed()
-    get_covid_news()
 
+    # Version 1.5.3: Fixed a bug causing there to be NO filenames
+    get_county_stats(dtstr)
+    get_global_stats(dtstr)
+    get_twitter_feed(dtstr)
+    get_covid_news(dtstr)
+    print('recorded COVID-19 data for timestamp ' + dtstr)
 
 def main():
 
@@ -91,7 +88,6 @@ def main():
     else:
         while True:
             run_all()
-            print('recorded COVID-19 data for timestamp ' + dtstr)
 
             # data updated every 15 minutes
             # version 1.4: Changed from every 60 minutes to every 15 minutes
