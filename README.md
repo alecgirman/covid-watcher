@@ -9,8 +9,6 @@ Currently only fetches US data per-county and global data as a whole.
 
 `git clone https://github.com/alecgirman/covid-watcher`
 
-`mkdir covid`
-
 `python3 covid.py`
 
 
