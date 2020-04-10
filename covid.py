@@ -10,8 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.5.3
-# Version running on VM: 1.5.3
+# Version: 1.5.4
+# Version running on VM: 1.5.4
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -91,7 +91,9 @@ def main():
 
             # data updated every 15 minutes
             # version 1.4: Changed from every 60 minutes to every 15 minutes
-            time.sleep(90)
+            # Version 1.5.4: I evidently can not do math because 90 seconds
+            # is not 15 minutes.
+            time.sleep(15 * 60)
 
 if __name__ == '__main__':
     main()
