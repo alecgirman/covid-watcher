@@ -10,7 +10,7 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.2
+# Version: 1.3
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -18,7 +18,10 @@ import os, sys
 # AWS instance, Azure VM, or Google Cloud instance.
 # 
 # How to launch:
-# 1. python3 covid.py
+# To start the script to run indefinitely, run it without any arguments
+#   python3 covid.py
+# To run it just once, use the --once argument.
+#   python3 covid.py --once
 
 url = "https://covid19-us-api.herokuapp.com/"
 dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
@@ -74,6 +77,8 @@ def run_all():
 
 
 def main():
+
+    # Version 1.3: added the option to run it just once
     if '--once' in sys.argv:
         run_all()
     else:

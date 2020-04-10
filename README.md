@@ -11,6 +11,10 @@ Currently only fetches US data per-county and global data as a whole.
 
 `python3 covid.py`
 
+This will start the script to run indefinitely.  If you just want to collect the current data without running indefinitely, you can launch it with the --once option.
+
+`python3 covid.py --once`
+
 
 TODO:
 
