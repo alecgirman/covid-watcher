@@ -10,7 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.3
+# Version: 1.4
+# Version running on VM: 1.4
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -30,6 +31,8 @@ dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
 # version 1.2: removed this because it broke in google cloud
 # if 'covid' in os.listdir():
 #     os.mkdir('covid')
+
+# Version 1.4: Added 'Version running on VM info'
 
 filename = 'covid/' + dtstr
 
@@ -86,9 +89,9 @@ def main():
             run_all()
             print('recorded COVID-19 data for timestamp ' + dtstr)
 
-            # county data is updated once an hour but I'll update everything once per hour
-            # this can be adjusted to your own needs.
-            time.sleep(360)
+            # data updated every 15 minutes
+            # version 1.4: Changed from every 60 minutes to every 15 minutes
+            time.sleep(90)
 
 if __name__ == '__main__':
     main()
