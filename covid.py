@@ -10,8 +10,8 @@ import os, sys
 # If you dont like it, than fix it yourself.
 #
 # Author: Alec Girman
-# Version: 1.5.1
-# Version running on VM: 1.5.1
+# Version: 1.5.2
+# Version running on VM: 1.5.2
 # File: covid.py
 # Description: A COVID-19 tracker that updates every hour
 # For best results, it is ideal to leave this script running 24/7.
@@ -25,6 +25,10 @@ import os, sys
 #   python3 covid.py --once
 
 url = "https://covid19-us-api.herokuapp.com/"
+
+# Version 1.5.2: Fixed NameError...stupid Alec
+dtstr = ''
+filename = ''
 
 # version 1.1: removed dependency for covid folder
 # version 1.2: removed this because it broke in google cloud
