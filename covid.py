@@ -4,7 +4,7 @@ import requests
 # import json
 from datetime import datetime as dt
 import time
-import os
+import os, sys
 
 # This code isnt perfect by any means, I made it in an hour.
 # If you dont like it, than fix it yourself.
@@ -66,18 +66,24 @@ def get_covid_news():
 
     print('Saved news for ' + dtstr)
 
+def run_all():
+    get_county_stats()
+    get_global_stats()
+    get_twitter_feed()
+    get_covid_news()
+
+
 def main():
-    while True:
-        get_county_stats()
-        get_global_stats()
-        get_twitter_feed()
-        get_covid_news()
+    if '--once' in sys.argv:
+        run_all()
+    else:
+        while True:
+            run_all()
+            print('recorded COVID-19 data for timestamp ' + dtstr)
 
-        print('recorded COVID-19 data for timestamp ' + dtstr)
-
-        # county data is updated once an hour but I'll update everything once per hour
-        # this can be adjusted to your own needs.
-        time.sleep(360)
+            # county data is updated once an hour but I'll update everything once per hour
+            # this can be adjusted to your own needs.
+            time.sleep(360)
 
 if __name__ == '__main__':
     main()
