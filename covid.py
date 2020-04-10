@@ -18,7 +18,8 @@ import os
 # AWS instance, Azure VM, or Google Cloud instance.
 # 
 # How to launch:
-# 1. python3 covid.py
+# 1. mkdir covid
+# 2. python3 covid.py
 
 url = "https://covid19-us-api.herokuapp.com/"
 dtstr = str(dt.now().date()) + '.' + str(dt.now().time())
