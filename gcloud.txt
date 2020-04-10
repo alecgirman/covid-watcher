@@ -1,0 +1,1 @@
+gcloud beta compute ssh --zone "us-east4-c" "covid-watcher" --project "gpvm-268700"
