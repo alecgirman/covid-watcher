@@ -49,7 +49,6 @@ def process_cases(vintage_df, transpose=False):
     else:
         return cases_df
 
-
 def process_deaths(vintage_df, transpose=False):
     death_series = [vintage_df[i][['key', 'death']].rename(columns={'death': str(dateseries[i])}) for i in range(len(vintage_json))]
     death_df = pd.concat([death_series[0], death_series[1].drop(['key'], axis=1)], axis=1)
@@ -68,3 +67,8 @@ def process_deaths(vintage_df, transpose=False):
         return death_dft
     else:
         return death_df
+
+if __name__ == '__main__':
+    vintages = process_vintages()
+    cases = process_cases(vintages)
+    deaths = process_deaths(vintages)
