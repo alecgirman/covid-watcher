@@ -130,6 +130,7 @@ dmypy.json
 
 # COVID-19 JSON files
 covid/*.json
+vintages/
 
 # Data Analysis scripts
 sum.sh
