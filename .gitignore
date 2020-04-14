@@ -128,9 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# COVID-19 JSON files
+
+
+
+# Custom
+
 covid/*.json
 vintages/
+*.ipynb
 
-# Data Analysis scripts
-sum.sh
